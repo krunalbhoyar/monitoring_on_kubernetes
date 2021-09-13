@@ -94,7 +94,7 @@ Note:- it dont work if you access you k8s cluster via aws cli
 B) access grafana  :                       (Pod_Name)
 kubectl port-forward -n monitoring grafana-6cb5cf45bf-p2zjf 3000
 
- grafana Import:\
+>> grafana Import:\
 8588 - Kubernetes Deployment Statefulset Daemonset metrics\
 1860 - Node Exporter Full\
 9964 - Jenkins: Performance and Health Overview\
