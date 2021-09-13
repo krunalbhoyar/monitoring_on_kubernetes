@@ -1,4 +1,5 @@
-Monitoring: Prometheus and Grafana
+# Monitoring: Prometheus and Grafana
+
 setup is on EC@ instance on which minikube is installed
 In security group all TCP ports is active
 
@@ -10,7 +11,7 @@ Procedure:
 1) create namespace "monitoring" 
 $ kubectl create ns monitoring
 
-# ++++++++++++++++++Setting up Prometheus++++++++++++++++++++++++
+# ++++++Setting up Prometheus+++++++
 Reference: https://devopscube.com/setup-prometheus-monitoring-on-kubernetes/
 
 go inside 'kubernetes-prometheus' folder and create all resources
@@ -31,7 +32,7 @@ $ kubectl get all --namespace=monitoring
 Browse it: http://<your-node-ip>:30000   node-ip is the EC2 instance ip (in security group all TCP ports is active)
 
 
-# ++++++++++++++++++++++Setting Up Kube State Metrics+++++++++++++++++++++++
+# ++++Setting Up Kube State Metrics++++
 Reference: https://devopscube.com/setup-kube-state-metrics/
 
 go inside "kube-state-metrics-configs" folder
@@ -42,7 +43,7 @@ $ kubectl get deployments kube-state-metrics -n kube-system
 All the above kube state metrics objects will be deployed in the kube-system namespace
 
 
-# +++++++++++++++++++++Setting Up Grafana+++++++++++++++++++++++
+# ++++Setting Up Grafana++++
 Reference: https://devopscube.com/setup-grafana-kubernetes/
 
 go inside "kubernetes-grafana" folder
@@ -61,7 +62,7 @@ User: admin
 Pass: admin
 
 
-# ++++++++++++++++++++Setting Up Node Exporter+++++++++++++++++++++++
+# ++++++Setting Up Node Exporter+++++++
 Reference: https://devopscube.com/node-exporter-kubernetes/
 go inside "kubernetes-node-exporter" folder
 
@@ -93,19 +94,19 @@ Note:- it dont work if you access you k8s cluster via aws cli
 B) access grafana  :                       (Pod_Name)
 kubectl port-forward -n monitoring grafana-6cb5cf45bf-p2zjf 3000
 
-grafana Import:
-8588 - Kubernetes Deployment Statefulset Daemonset metrics
-1860 - Node Exporter Full
-9964 - Jenkins: Performance and Health Overview
-805 - Node Exporter Server Metrics
+ grafana Import:\
+8588 - Kubernetes Deployment Statefulset Daemonset metrics\
+1860 - Node Exporter Full\
+9964 - Jenkins: Performance and Health Overview\
+805 - Node Exporter Server Metrics\
 3119 - k8s cluster monitoring (via prometheus)
 ===============================================================================================================================
 
-+++++++++++++++++++++++Theory+++++++++++++++++++++++++++++++++++
+# +++++++++Theory+++++++++
 
->>Prometheus
+>>Prometheus:
 
->>Kube state metrics"
+>>Kube state metrics:
 you need to install "Kube state metrics" to get all the metrics related to kubernetes objects.
 All the above kube state metrics objects will be deployed in the kube-system namespace
 Kube state metrics service will provide many metrics which is not available by default. Please make sure you deploy Kube state metrics to monitor all your kubernetes API objects like deployments, pods, jobs, cronjobs etc..
@@ -115,7 +116,7 @@ Kube state metrics service will provide many metrics which is not available by d
 It collects all the hardware and Operating System level metrics that are exposed by the kernel.
 You can use the node exporter to collect the system metrics from all your Linux systems
 
->>Grafana
+>>Grafana:
 
 >>also set alert manager
 https://devopscube.com/alert-manager-kubernetes-guide/
