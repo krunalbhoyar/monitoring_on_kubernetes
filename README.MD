@@ -51,10 +51,13 @@ go inside "kubernetes-grafana" folder
 A) Create data source configuration
 $ kubectl create -f grafana-datasource-config.yaml
 
-B) Create Deployment
-$ kubectl create -f grafana-datasource-config.yaml
+B) Create ConfigMap to paas grafana.ini file to grafana container
+$ kubectl create configmap grafana-config --from-file=grafana.ini -n monitoring
 
-C) Create service
+C) Create Deployment
+$ kubectl create -f deployment.yaml
+
+D) Create service
 $ kubectl create -f service.yaml
 
 Browse it: http://<your-node-ip>:32000         (in security group all TCP ports is active)
