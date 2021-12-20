@@ -53,7 +53,8 @@ go inside "kubernetes-grafana" folder
 A) Create data source configuration
 $ kubectl create -f grafana-datasource-config.yaml
 
-B) Create ConfigMap to paas grafana.ini file to grafana container
+B) Here you need to change details in [ smtp/Emailing ] of grafana.ini file (from where u need to send email alerts) 
+  Create ConfigMap to paas grafana.ini file to grafana container
 $ kubectl create configmap grafana-config --from-file=grafana.ini -n monitoring
 
 C) Create Deployment
