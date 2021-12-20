@@ -33,6 +33,9 @@ spec:
           - mountPath: /etc/grafana/provisioning/datasources
             name: grafana-datasources
             readOnly: false
+          - mountPath: /etc/grafana
+            name: grafana-configmap
+            readOnly: false
       volumes:
         - name: grafana-storage
           emptyDir: {}
@@ -40,3 +43,7 @@ spec:
           configMap:
               defaultMode: 420
               name: grafana-datasources
+        - name: grafana-configmap
+          configMap:
+              defaultMode: 420
+              name: grafana-config
