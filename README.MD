@@ -27,6 +27,8 @@ $ kubectl create  -f prometheus-deployment.yaml
 D) Create service in monitoring namespace
 $ kubectl create -f prometheus-service.yaml --namespace=monitoring
 
+Dont create ingress here
+
 $ kubectl get all --namespace=monitoring
 
 Browse it: http://<your-node-ip>:30000   node-ip is the EC2 instance ip (in security group all TCP ports is active)
